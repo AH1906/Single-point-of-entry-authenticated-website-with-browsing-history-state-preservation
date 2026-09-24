@@ -8,7 +8,6 @@
 <img width="1280" height="358" alt="image" src="https://github.com/user-attachments/assets/e8908f46-66b9-40db-96c2-734419302ab7" />
 <img width="1280" height="320" alt="image" src="https://github.com/user-attachments/assets/f11f6075-cd96-4af4-8e0d-0e8aba8a9391" />
 
-
 A PHP and MySQL web application built around a single-entry-point (MVC-style) controller pattern, with session-based login authentication and cookie-based restoration of a user's last viewed page and theme after logging back in.
 
 Built as coursework for the "Web Programming Using PHP" module at Birkbeck, University of London.
@@ -62,20 +61,17 @@ User accounts are stored in a MySQL `usersTable` (`username`, `password`), queri
 3. If logout is submitted, the current page and theme are saved to cookies, and the session is destroyed.
 4. Navigation links and page content are generated based on login state, and the whole page is assembled by substituting placeholders in the HTML templates.
 
-## Running Locally
+## Setup & Deployment
 
-Requires PHP and MySQL.
+This project was built to run on Birkbeck's shared PHP/MySQL web server rather than locally, since it depends on a university-hosted MySQL database (`mysqlsrv.dcs.bbk.ac.uk`).
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/AH1906/Single-point-of-entry-authenticated-website-with-browsing-history-state-preservation.git
-   ```
-2. Set up a MySQL database with a `usersTable` (username, password columns) and update the connection details in `config.php`.
-3. Serve the project with a local PHP server, e.g.:
-   ```bash
-   php -S localhost:8000
-   ```
-4. Visit `http://localhost:8000` in your browser.
+1. Connect to Birkbeck's network using the FortiClient VPN (required for off-campus access to the server).
+2. Upload the project files to your Birkbeck web space using an SFTP client such as FileZilla.
+3. Create a `usersTable` in your Birkbeck MySQL database (see `database.sql` for the schema) using your university-provided database name and credentials.
+4. Update `config.php` with your own database host, name, username and password (do not commit real credentials — use placeholders in any public copy of this file).
+5. Visit the deployed URL on Birkbeck's server to use the site.
+
+To adapt this project to run on a different PHP/MySQL host, update the connection details in `config.php` to point at that server instead.
 
 ## About
 
