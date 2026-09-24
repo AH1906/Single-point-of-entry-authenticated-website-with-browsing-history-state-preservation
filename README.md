@@ -1,1 +1,82 @@
 # Single-point-of-entry-authenticated-website-with-browsing-history-state-preservation
+
+<img width="605" height="435" alt="image" src="https://github.com/user-attachments/assets/f43b7c12-548a-4fcb-85e3-8bc0235108b7" />
+<img width="1276" height="545" alt="image" src="https://github.com/user-attachments/assets/e617fdb3-ba5e-40fc-b3cd-518f26b59a1f" />
+<img width="1274" height="530" alt="image" src="https://github.com/user-attachments/assets/0c0c4f53-f86c-40f8-89f2-5b7714d0620a" />
+<img width="1280" height="591" alt="image" src="https://github.com/user-attachments/assets/d4e97dcc-8e35-4742-8372-d4ac0a3919ed" />
+<img width="1278" height="311" alt="image" src="https://github.com/user-attachments/assets/fa4259c8-db73-4b73-b180-e4bbea8bee86" />
+<img width="1280" height="358" alt="image" src="https://github.com/user-attachments/assets/e8908f46-66b9-40db-96c2-734419302ab7" />
+<img width="1280" height="320" alt="image" src="https://github.com/user-attachments/assets/f11f6075-cd96-4af4-8e0d-0e8aba8a9391" />
+
+
+A PHP and MySQL web application built around a single-entry-point (MVC-style) controller pattern, with session-based login authentication and cookie-based restoration of a user's last viewed page and theme after logging back in.
+
+Built as coursework for the "Web Programming Using PHP" module at Birkbeck, University of London.
+
+## Overview
+
+All requests are routed through a single controller (`index.php`), which decides what to render based on the logged-in state, the requested view, and data stored in the session and cookies. Rather than each page being its own PHP file with duplicated logic, one script handles login, logout, navigation, styling and page content, and includes the correct view template.
+
+## Key Features
+
+- **Session-based authentication** — users log in with a username and password, validated against a MySQL database using prepared statements (PDO) to prevent SQL injection
+- **Single point of entry** — one controller script (`index.php`) handles routing, authentication state, and rendering for every page, based on a `view` URL parameter
+- **Browsing history & preference restoration** — on logout, the user's last-viewed page and selected theme are saved in cookies (valid for a year) so that logging back in restores exactly where they left off
+- **Dynamic theme switching** — users can switch between plain, light, and dark stylesheets, with the choice stored in the session and persisted across logins via cookies
+- **Access control** — protected pages (`page1`, `page2`) redirect to the home view if accessed without an active session
+- **Template-based rendering** — page structure, navigation and forms are built from HTML templates with placeholder tokens (e.g. `[+content+]`, `[+nav+]`) that are substituted server-side, keeping HTML separate from PHP logic
+- **Input sanitisation** — user input is trimmed and passed through `htmlentities()` before use, and login errors (unknown user, incorrect password, missing database table) are handled and displayed cleanly
+- **Custom 404 handling** — any unrecognised `view` parameter falls back to a 404 page
+
+## Database
+
+User accounts are stored in a MySQL `usersTable` (`username`, `password`), queried using PDO prepared statements rather than raw SQL, to protect against SQL injection. A helper function (`databaseExists`) also checks that the expected table exists before attempting a login query, and clear error messages are shown if it doesn't.
+
+## Tech Stack
+
+- **PHP** — server-side logic and routing
+- **MySQL** (via PDO) — user data storage, accessed with prepared statements
+- **HTML/CSS** — page templates and theme stylesheets (plain, light, dark)
+- **PHP Sessions & Cookies** — authentication state and persisted user preferences
+
+## Project Structure
+
+```
+├── index.php              # Single-entry-point controller: routing, auth, rendering
+├── functions.php          # Core logic: validation, login/logout, nav building, styling
+├── config.php             # Database connection (PDO)
+├── home.php               # Home view
+├── page1.php              # Protected view (login required)
+├── page2.php              # Protected view (login required)
+├── 404.php                # Fallback view for unknown routes
+├── loginFormTemplate.html   # Login form template
+├── logoutFormTemplate.html  # Logout / logged-in-user template
+├── pageTemplate.html      # Overall page layout template
+├── plain.css / light.css / dark.css   # Selectable themes
+```
+
+## How It Works
+
+1. A request comes in to `index.php`, which checks the `view` parameter (or falls back to the session or the home view).
+2. If a login form was submitted, credentials are validated against the database; on success, the session is populated and any saved cookie preferences (last page, theme) are restored.
+3. If logout is submitted, the current page and theme are saved to cookies, and the session is destroyed.
+4. Navigation links and page content are generated based on login state, and the whole page is assembled by substituting placeholders in the HTML templates.
+
+## Running Locally
+
+Requires PHP and MySQL.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/AH1906/Single-point-of-entry-authenticated-website-with-browsing-history-state-preservation.git
+   ```
+2. Set up a MySQL database with a `usersTable` (username, password columns) and update the connection details in `config.php`.
+3. Serve the project with a local PHP server, e.g.:
+   ```bash
+   php -S localhost:8000
+   ```
+4. Visit `http://localhost:8000` in your browser.
+
+## About
+
+This project was built as coursework for the Web Programming Using PHP module of the BSc Computer Science (Part-Time) degree at Birkbeck, University of London.
