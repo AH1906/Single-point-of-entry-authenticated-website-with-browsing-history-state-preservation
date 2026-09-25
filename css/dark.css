@@ -1,0 +1,49 @@
+/* 
+Some basic styles... 
+----------------------------------------------------- */
+html, h1, h2, h3, h4, h5, h6, ul, li {
+	margin:0;
+	padding:0;
+}
+body {
+    width:800px;
+    padding: 0;
+    margin: 0 auto;
+    background-color: #004E6D;
+}
+header, main, footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:100%;
+	color:gold;
+	background-color: #fff;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+}
+
+main {color:black}
+
+h1, h2 {
+    font-weight: 400;
+	padding: 0.25em 0 0.5em 0;
+}
+header {
+	background-color: #cc0066;	
+}
+footer {
+	border-top: 3px solid #b3b3b3;	
+}
+
+nav li {
+    display: inline;
+    margin-right: 2em;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: #000;
+}
+a:hover {
+    color: #f60;
+}
