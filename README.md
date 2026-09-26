@@ -1,12 +1,11 @@
 # Single-point-of-entry-authenticated-website-with-browsing-history-state-preservation
 
-<img width="605" height="435" alt="image" src="https://github.com/user-attachments/assets/f43b7c12-548a-4fcb-85e3-8bc0235108b7" />
-<img width="1276" height="545" alt="image" src="https://github.com/user-attachments/assets/e617fdb3-ba5e-40fc-b3cd-518f26b59a1f" />
-<img width="1274" height="530" alt="image" src="https://github.com/user-attachments/assets/0c0c4f53-f86c-40f8-89f2-5b7714d0620a" />
-<img width="1280" height="591" alt="image" src="https://github.com/user-attachments/assets/d4e97dcc-8e35-4742-8372-d4ac0a3919ed" />
-<img width="1278" height="311" alt="image" src="https://github.com/user-attachments/assets/fa4259c8-db73-4b73-b180-e4bbea8bee86" />
-<img width="1280" height="358" alt="image" src="https://github.com/user-attachments/assets/e8908f46-66b9-40db-96c2-734419302ab7" />
-<img width="1280" height="320" alt="image" src="https://github.com/user-attachments/assets/f11f6075-cd96-4af4-8e0d-0e8aba8a9391" />
+<img width="1280" height="677" alt="image" src="https://github.com/user-attachments/assets/06458854-64d8-47fa-a5d3-e318e0f47b03" />
+<img width="1277" height="674" alt="image" src="https://github.com/user-attachments/assets/092aa667-0ab6-468f-9466-ba75283bd4e2" />
+<img width="1280" height="673" alt="image" src="https://github.com/user-attachments/assets/1f9f5cda-e5ec-41cd-aa2f-9fa4f0583689" />
+<img width="1277" height="675" alt="image" src="https://github.com/user-attachments/assets/7762b8ff-7a92-4244-8b46-0b1d503f5e88" />
+<img width="1280" height="676" alt="image" src="https://github.com/user-attachments/assets/95703fd3-c648-40f9-a642-2eb563971e05" />
+
 
 A PHP and MySQL web application built around a single-entry-point (MVC-style) controller pattern, with session-based login authentication and cookie-based restoration of a user's last viewed page and theme after logging back in.
 
